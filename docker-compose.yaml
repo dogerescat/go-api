@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  api:
+    build: ./backend
+    environment:
+      TZ: 'Asia/Tokyo'
+    tty: true
+    ports:
+      - 80:80
+    depends_on:
+      - 'db'
+
+  db:
+    build: ./db
+    env_file: ./db/sql/sql.env
+    environment:
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./db/sql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/sql:/docker-entrypoint-initdb.d
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3306:3306
