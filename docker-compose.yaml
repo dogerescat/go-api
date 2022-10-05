@@ -2,8 +2,11 @@ version: "3.9"
 services:
   api:
     build: ./backend
+    env_file: ./backend/app.env
     environment:
       TZ: 'Asia/Tokyo'
+    volumes:
+      - ./backend/src:/app/src
     tty: true
     ports:
       - 80:80
