@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `todos`;
 CREATE TABLE IF NOT EXISTS `todos` (
 	`id` INT AUTO_INCREMENT,
 	`title` CHAR(20),
-	`is_dane` BOOLEAN,
+	`is_done` BOOLEAN,
 	`user_id` INT,
 	PRIMARY KEY (`id`)
 )DEFAULT CHARSET=utf8 COLLATE=utf8_bin;;

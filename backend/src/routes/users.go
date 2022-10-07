@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetRouter(users *gin.RouterGroup) {
+func GetUserRouter(users *gin.RouterGroup) {
 	userController := controllers.NewUserController()
 	users.GET("/hello", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{

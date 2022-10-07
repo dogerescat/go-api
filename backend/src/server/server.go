@@ -14,6 +14,8 @@ func Run(port int) {
 func run(port int) {
 	r := gin.Default()
 	users := r.Group("/users")
-	routes.GetRouter(users)
+	routes.GetUserRouter(users)
+	todos := r.Group("/todos")
+	routes.GetTodoRouter(todos)
 	r.Run(fmt.Sprintf(":%d", port))
 }

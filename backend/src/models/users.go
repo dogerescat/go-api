@@ -22,3 +22,13 @@ func (u *User) Create() {
 		panic(err)
 	}
 }
+
+func GetUser(id int) (*User, error) {
+	cmd := `SELECT * FROM users WHERE id = ?`
+	u := &User{}
+	err := database.Db.QueryRow(cmd, id).Scan(u.ID, u.Name, u.Email, u.Password)
+	if err != nil {
+		return u, err
+	}
+	return u, err
+}
